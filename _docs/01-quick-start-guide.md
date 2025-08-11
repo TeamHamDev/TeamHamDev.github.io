@@ -57,7 +57,7 @@ Clicking the selection button for the field will display a list of relevant acto
 
 For additional agent-related properties, refer to the [Class Reference](/docs/component-reference/#pathfindingcomponent).
 
-## 5. Executing a Pathfinding Test
+## 5. Executing a Pathfinding Test  
 After completing the setup, you can verify the pathfinding in PIE mode.
 
 ### Prerequisites:
