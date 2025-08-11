@@ -1,0 +1,12 @@
+main:
+  - title: "Getting Started"
+    url: /docs/getting-started/
+    children:
+      - title: "Requirements"
+        url: /docs/requirements/
+      - title: "Quick-Start Guide"
+        url: /docs/quick-start-guide/
+      - title: "Class Reference"
+        url: /docs/component-reference/
+  - title: "Contact"
+    url: /contact/
