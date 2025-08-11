@@ -13,7 +13,6 @@ For general inquiries, support, or business questions, please send us an email a
 
 ## Discord
 
-Join our community on Discord to chat with other users, get help, and stay up-to-date with the latest developments:
-- **[Join the TeamHamDev Discord Server](https://discord.gg/PMxQ3ysC)**
+In preparation
 
 We look forward to connecting with you!
