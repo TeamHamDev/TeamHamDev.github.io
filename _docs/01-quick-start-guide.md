@@ -44,6 +44,7 @@ Once the navigation volume is defined and baked, place an Actor that will operat
 ![image.png](/assets/images/image_7.png)
 
 Selecting an actor that owns a UPathfindingComponent displays that actor’s agent-specific Details panel within the Pathfinding Tuner. 
+
 ![image.png](/assets/images/image_4.png)
 
 ### 4.1 Agent Settings Parameters
