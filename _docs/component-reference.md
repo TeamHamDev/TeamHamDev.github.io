@@ -60,8 +60,8 @@ This document details the core classes of the Smart Flying Navigation plugin.
       <td><code>UVoxelObstacleProfile*</code></td>
       <td>
         <details>
-          <summary>Defines which actors are static obstacles.</summary>
-          Defines which actors and components should be considered static obstacles during the octree baking process.
+          <summary>Defines which actors are treated as static obstacles.</summary>
+          This profile allows you to filter objects by their Collision Channel or Object Tags, giving you precise control over what is included in the baked navigation data. The profile can be configured to 'Match Any' (baking objects that meet any of the specified criteria) or 'Match And' (baking only objects that meet all specified criteria). If no profile is assigned, the system defaults to treating all objects with the <code>WorldStatic</code> collision object type as obstacles.
         </details>
       </td>
     </tr>
@@ -256,4 +256,62 @@ This document details the core classes of the Smart Flying Navigation plugin.
 ## Subsystems
 
 ### AvoidanceSubsystem
-Description...
+<p>These are the publicly exposed variables in <code>UAvoidanceSubsystem</code>, which are accessible in the Unreal Editor's Details panel and can be read/written in Blueprints.</p>
+
+<h4>Properties</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>TimeHorizon</code></td>
+      <td><code>float</code></td>
+      <td>Defines how far into the future the avoidance system considers potential collisions.</td>
+    </tr>
+    <tr>
+      <td><code>MaxNeighbors</code></td>
+      <td><code>int32</code></td>
+      <td>Specifies the maximum number of neighboring agents or obstacles considered for each agent during calculations.</td>
+    </tr>
+    <tr>
+      <td><code>GridCellSize</code></td>
+      <td><code>float</code></td>
+      <td>Defines the size of grid cells used for spatial partitioning, influencing obstacle detection granularity.</td>
+    </tr>
+    <tr>
+      <td><code>SymmetryBreakingRangeMultiplier</code></td>
+      <td><code>float</code></td>
+      <td>Introduces asymmetry to prevent agents from getting stuck in reciprocal oscillations.</td>
+    </tr>
+    <tr>
+      <td><code>SolverIterations</code></td>
+      <td><code>int32</code></td>
+      <td>Determines the number of iterations the avoidance solver performs for optimal velocity calculation.</td>
+    </tr>
+    <tr>
+      <td><code>SideBiasMagnitude</code></td>
+      <td><code>float</code></td>
+      <td>Controls the strength of a bias encouraging agents to prefer passing on one side of an obstacle.</td>
+    </tr>
+    <tr>
+      <td><code>InterpSpeed</code></td>
+      <td><code>float</code></td>
+      <td>Controls how quickly an agent adjusts its current velocity towards the calculated optimal avoidance velocity.</td>
+    </tr>
+    <tr>
+      <td><code>bShowVelocityDebugLine</code></td>
+      <td><code>bool</code></td>
+      <td>When true, enables debug lines to visualize agent velocities.</td>
+    </tr>
+    <tr>
+      <td><code>bUseAvoidance</code></td>
+      <td><code>bool</code></td>
+      <td>When true, enables the avoidance system for agents.</td>
+    </tr>
+  </tbody>
+</table>
