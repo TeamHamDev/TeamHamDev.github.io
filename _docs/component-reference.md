@@ -13,7 +13,70 @@ This document details the core classes of the Smart Flying Navigation plugin.
 ## Actors
 
 ### OctreeVoxelVolume
-Description...
+<p>The <code>OctreeVoxelVolume</code> actor is responsible for managing the static collision data used for pathfinding. It bakes the environment into an octree structure.</p>
+
+<h4>Properties</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>VoxelExtent</code></td>
+      <td><code>float</code></td>
+      <td>
+        <details>
+          <summary>The side length of the smallest individual voxel.</summary>
+          It directly controls the granularity of the navigation grid. Smaller voxel extents allow for more precise pathfinding and better obstacle avoidance, especially for agents with small radii. Conversely, a larger voxel extent results in a coarser grid, which is more memory-efficient but may lead to less optimal paths or collisions with smaller details.
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td><code>MapSize</code></td>
+      <td><code>FIntVector</code></td>
+      <td>
+        <details>
+          <summary>The overall dimensions (X, Y, Z) of the navigation volume.</summary>
+          It defines the total area where pathfinding can occur. This setting, combined with Voxel Extent, determines the physical size of the navigable space. A larger map size covers a wider area but can also contribute to increased memory usage and baking time.
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td><code>BakedOctreeData</code></td>
+      <td><code>TSoftObjectPtr&lt;UOctreeDataAsset&gt;</code></td>
+      <td>
+        <details>
+          <summary>Holds the pre-baked octree data for static geometry.</summary>
+          This data is loaded at runtime to initialize the static collision information for pathfinding.
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td><code>StaticObjectProfile</code></td>
+      <td><code>UVoxelObstacleProfile*</code></td>
+      <td>
+        <details>
+          <summary>Defines which actors are static obstacles.</summary>
+          Defines which actors and components should be considered static obstacles during the octree baking process.
+        </details>
+      </td>
+    </tr>
+    <tr>
+      <td><code>BakeExcludeActors</code></td>
+      <td><code>TArray&lt;AActor*&gt;</code></td>
+      <td>
+        <details>
+          <summary>(Editor-only) Actors to be ignored during baking.</summary>
+          Any actors added to this list will be explicitly ignored during the octree baking process, preventing them from being considered static obstacles.
+        </details>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Components
 
@@ -114,11 +177,6 @@ Description...
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><code>bPeriodicRepath</code></td>
-      <td><code>bool</code></td>
-      <td>If true, the agent will automatically request a new path on a timer, defined by Repath Cooldown. Essential for tracking moving targets.</td>
-    </tr>
     <tr>
       <td><code>RepathCooldown</code></td>
       <td><code>float</code></td>

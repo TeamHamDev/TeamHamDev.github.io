@@ -1,0 +1,20 @@
+feat: Restructure documentation and clean up theme defaults
+
+This commit introduces several improvements to the project documentation:
+
+- **Navigation:**
+  - Moved "Class Reference" under "Getting Started" for better flow.
+  - Renamed "Component Reference" to "Class Reference" for clarity.
+  - Renamed "Installation" to "Requirements" and updated its content to reflect Unreal Engine plugin specifics and Fab marketplace installation.
+  - Made "Getting Started" a clickable overview page.
+  - Removed "Previous" and "Next" pagination buttons from documentation pages.
+
+- **Content:**
+  - Updated "Quick-Start Guide" with relevant Unreal Engine plugin tutorial content.
+  - Updated "Contact Us" page with Discord link and improved formatting.
+  - Updated "Requirements" page with detailed Unreal Engine version support and Fab installation instructions.
+
+- **Cleanup:**
+  - Removed unused example posts, collections, pages, and theme documentation files.
+  - Removed "Follow: Feed" link and "Powered by Jekyll & Minimal Mistakes" text from the footer.
+  - Adjusted copyright year to 2025.

@@ -5,25 +5,74 @@ toc: true
 page_nav: false
 ---
 
-This guide provides a basic, step-by-step tutorial to get your first flying agent moving with the Smart Flying Navigation plugin.
+## 1. Smart Flying Navigation Tutorial
+Place an `OctreeVoxelVolume` Actor in your level. This actor defines the base volume for the 3D navigable space.
+A cube, visible upon placement, indicates the actor's presence and initial size, visualizing the boundaries for agent navigation.
+![image.png](/assets/images/image_1.png)
+![image.png](/assets/images/image_2.png)
 
-## 1. Creating the Agent
+Detailed configuration is done in the dedicated Pathfinding Tuner UI. When you select the `OctreeVoxelVolume` in the level, an 'Open Tuner' button appears in its Details panel, providing access to all related settings. Clicking the button opens a UI for centralized control over navigation parameters and actions.
+![image.png](/assets/images/image_3.png)
+![image.png](/assets/images/image_ui.png)
 
-1.  Create a new `Blueprint Actor` in your Content Browser. Let's name it `BP_FlyingAgent`.
-2.  Open the Blueprint editor for `BP_FlyingAgent`.
-3.  Add a `Static Mesh` component so you can see the agent in the world. Assign any mesh you like.
-4.  Add the `PathfindingComponent` to the actor.
+This UI contains several setting sections for precise control over the plugin's behavior. The meaning and performance impact of each section are described below.
+For detailed properties of the `OctreeVoxelVolume`, refer to the [Class Reference](/docs/component-reference/#octreevoxelvolume).
 
-## 2. Setting Up the Scene
+## 2. Baking Navigation Data
+Once the core parameters are configured, you perform the bake process. Baking converts the static environment geometry into an optimized voxel grid, saves it as a `BakedOctreeDataAsset`, and ensures runtime pathfinding performance.
 
-1.  Drag an instance of `BP_FlyingAgent` into your level.
-2.  Create a target for the agent to move to. For example, you can place an empty Actor in the level and assign it to the `TargetActor` property of your `BP_FlyingAgent` in the Details panel.
-3.  Ensure you have a `Voxel Octree Volume` in your scene that covers the area where the agent will move.
+### 2.1 How to Perform a Bake
+- **Configure Bake Settings:** In the Pathfinding Tuner, specify the `VoxelObstacleProfile` and set the `BakedDataSaveDirectory`.
+- **Prepare the Environment:** Place static meshes and other obstacles to be included in the navigation data within the bounds of the `OctreeVoxelVolume`.
+- **Execute Bake:** Select the `OctreeVoxelVolume` in the level and click the 'Generate data asset from selected volumes' button.
+![image.png](/assets/images/image_ui_bake.png)
 
-## 3. Making it Move
+The plugin will then process the geometry, create a `BakedOctreeDataAsset`, and save it to the specified directory.
 
-With the `TargetActor` set, the `PathfindingComponent` will automatically begin to find a path and move the agent towards it when you start the game.
+## 3. Visualizing Navigation Data
+After baking, entering Play In Editor (PIE) mode will automatically visualize the baked voxel navigation data in the viewport. Empty space is omitted, and only identified obstacles are displayed as colored voxels.
 
-Press **Play** in the editor. You should see your `BP_FlyingAgent` navigate towards the target actor.
 
-This is a very basic setup. For more advanced options, please refer to the **[Class Reference](/docs/component-reference/)**.
+You can also visualize the bounds of the `OctreeVoxelVolume` itself.
+![image.png](/assets/images/image_5.png)
+- **Draw Debug Box:** Displays the volume's primary bounding box as a wireframe in the editor viewport. This is an editor-only debug feature and does not affect runtime performance.
+- **Debug Line Width:** Adjusts the thickness of the bounding box lines, useful for visibility in complex scenes or from a distance.
+![image.png](/assets/images/image_6.png)
+
+## 4. Setting up the Agent
+Once the navigation volume is defined and baked, place an Actor that will operate in the navigable space. This Actor is equipped with a `UPathfindingComponent` and uses the pre-calculated data to navigate the environment.
+![image.png](/assets/images/image_7.png)
+
+Selecting an actor that owns a UPathfindingComponent displays that actor’s agent-specific Details panel within the Pathfinding Tuner. 
+![image.png](/assets/images/image_4.png)
+
+### 4.1 Agent Settings Parameters
+To set a pathfinding goal, you will define a `TargetActor`.
+1. Place a destination actor (e.g., `BP_Dest`) in the level.
+2. In the Tuner UI, assign this actor to the `TargetActor` field.
+
+![image.png](/assets/images/image_11.png)
+
+Clicking the selection button for the field will display a list of relevant actors in the level to choose from.
+
+For additional agent-related properties, refer to the [Class Reference](/docs/component-reference/#pathfindingcomponent).
+
+## 5. Executing a Pathfinding Test
+After completing the setup, you can verify the pathfinding in PIE mode.
+
+### Prerequisites:
+- **Bake Octree Data:** Bake the navigation volume's data into its designated Data Asset.
+- **Assign Data Assets:** In the Tuner, assign both the `VoxelObstacleProfile` and the baked `OctreeDataAsset`.
+- **Set Target:** Specify a `TargetActor` (e.g., `BP_Dest`) and ensure it is located within an active navigation volume.
+
+### Test Steps:
+1. Enter Play-in-Editor (PIE) mode.
+2. In your Blueprint graph, call one of the following nodes on your `PathfindingComponent`:
+    - `Request Path to Target Actor`
+    - `Request Path to Location`
+
+![image.png](/assets/images/image_10.png)
+
+Upon calling either, the agent will move from its current location toward the specified target, following the path calculated from the baked octree data.
+
+![image.png](/assets/images/image_9.png)

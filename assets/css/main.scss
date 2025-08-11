@@ -7,3 +7,25 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.page__content table {
+  table-layout: fixed;
+  width: 100%;
+
+  th:nth-child(1) { // Property column
+    width: 25%;
+  }
+
+  th:nth-child(2) { // Type column
+    width: 20%;
+  }
+
+  th:nth-child(3) { // Description column
+    width: 55%;
+  }
+
+  td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
