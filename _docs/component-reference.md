@@ -182,11 +182,7 @@ This document details the core classes of the Smart Flying Navigation plugin.
       <td><code>float</code></td>
       <td>The time in seconds to wait between automatic path requests when bPeriodicRepath is enabled.</td>
     </tr>
-    <tr>
-      <td><code>GoalUpdateThreshold</code></td>
-      <td><code>float</code></td>
-      <td>Triggers a new path request only if the target has moved more than this distance (in cm) since the last path was calculated. A performance-saving alternative to periodic repathing.</td>
-    </tr>
+    
   </tbody>
 </table>
 
