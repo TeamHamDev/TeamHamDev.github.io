@@ -1,5 +1,4 @@
 ---
-# 프로젝트 루트 폴더에 새로 만드세요.
 layout: splash
 permalink: /
 header:
