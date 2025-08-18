@@ -24,7 +24,7 @@ name                     : "TeamHamDev"
 description              :  "Documentation for Smart Flying Navigation, a high-performance, integrated navigation plugin for complex 3D environments in Unreal Engine."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "TeamHamDev/TeamHamDev.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -34,31 +34,20 @@ enable_copy_code_button  : # true, false (default)
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
-  disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-  utterances:
-    theme                : # "github-light" (default), "github-dark"
-    issue_term           : # "pathname" (default)
+  provider               : "giscus"
   giscus:
-    repo_id              : # Shown during giscus setup at https://giscus.app
-    category_name        : # Full text name of the category
-    category_id          : # Shown during giscus setup at https://giscus.app
-    discussion_term      : # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled    : # '1' for enabled (default), '0' for disabled
-    theme                : # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
-    strict               : # 1 for enabled, 0 for disabled (default)
-    input_position       : # "top", "bottom" # The comment input box will be placed above or below the comments
-    emit_metadata        : # 1 for enabled, 0 for disabled (default) # https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#imetadatamessage
-    lang                 : # "en" (default)
-    lazy                 : # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
+    repo                 : "TeamHamDev/TeamHamDev.github.io"
+    repo_id              : "R_kgDOPb3ejA"
+    category_name        : "General"
+    category_id          : "DIC_kwDOPb3ejM4CuScx"
+    discussion_term      : "pathname"
+    reactions_enabled    : "0"
+    theme                : "preferred_color_scheme"
+    strict               : "0"
+    input_position       : "bottom"
+    emit_metadata        : "0"
+    lang                 : "en"
+    lazy                 : true
   staticman:
     branch               : # "master"
     endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"

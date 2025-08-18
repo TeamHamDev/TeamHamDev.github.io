@@ -67,6 +67,7 @@ body {
 .page__title {
   margin-top: 0;
   line-height: 1;
+  margin-bottom: 0;
 
   a {
     color: $text-color;
@@ -427,11 +428,11 @@ body {
 }
 
 .page__comments-title {
-  margin-top: 2rem;
+  margin-top: 0;
   margin-bottom: 10px;
   padding-top: 2rem;
   font-size: $type-size-6;
-  border-top: 1px solid $border-color;
+  border-top: none;
   text-transform: uppercase;
 }
 

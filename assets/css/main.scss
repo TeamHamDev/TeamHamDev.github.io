@@ -40,3 +40,17 @@ search: false
 .changelog-entry > *:first-child {
   margin-top: 0;
 }
+
+/* Custom overrides for Feedback page */
+.page__content h1,
+.page__content h2,
+.page__content h3,
+.page__content h4,
+.page__content h5,
+.page__content h6 {
+  border-bottom: none !important;
+}
+
+.page__content {
+  border-bottom: none !important;
+}
